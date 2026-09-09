@@ -68,6 +68,11 @@ requests therefore run through `urllib` in the executor rather than asynchronous
 uncritical at one poll every five minutes, and it avoids a dependency on
 `fritzconnection`.
 
+## Icon
+
+The integration ships its own brand icon (`brand/` folder inside the integration);
+Home Assistant 2026.3 or newer picks it up automatically.
+
 ## Disclaimer
 
 This project is not affiliated with AVM. Use at your own risk.
