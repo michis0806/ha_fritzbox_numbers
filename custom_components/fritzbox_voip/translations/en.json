@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "FritzBox phone numbers",
+        "description": "Requires \"Allow access for applications\" (TR-064) in the FritzBox under Home Network > Network > Network Settings. The account needs the \"FRITZ!Box Settings\" permission.",
+        "data": { "host": "Host", "username": "Username", "password": "Password" }
+      },
+      "reauth_confirm": {
+        "title": "Credentials",
+        "description": "Login to {host} failed. Please enter the credentials again.",
+        "data": { "username": "Username", "password": "Password" }
+      }
+    },
+    "error": {
+      "cannot_connect": "FritzBox not reachable.",
+      "invalid_auth": "Wrong username or password, or the account lacks the \"FRITZ!Box Settings\" permission.",
+      "no_tr064": "TR-064 is switched off. Enable \"Allow access for applications\" in the FritzBox."
+    },
+    "abort": { "already_configured": "This FritzBox is already configured." }
+  },
+  "entity": {
+    "sensor": {
+      "registration_status": { "name": "Registration status" },
+      "registered_numbers": { "name": "Registered numbers" }
+    }
+  }
+}

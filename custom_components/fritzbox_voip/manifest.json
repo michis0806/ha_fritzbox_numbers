@@ -1,0 +1,14 @@
+{
+  "domain": "fritzbox_voip",
+  "name": "FritzBox Rufnummern",
+  "codeowners": [
+    "@michis0806"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/michis0806/ha_fritzbox_numbers",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/michis0806/ha_fritzbox_numbers/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}

@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "FritzBox Rufnummern",
+        "description": "Setzt \"Zugriff für Anwendungen zulassen\" (TR-064) in der FritzBox voraus, unter Heimnetz > Netzwerk > Netzwerkeinstellungen. Der Benutzer braucht die Berechtigung \"FRITZ!Box Einstellungen\".",
+        "data": { "host": "Host", "username": "Benutzername", "password": "Passwort" }
+      },
+      "reauth_confirm": {
+        "title": "Zugangsdaten",
+        "description": "Die Anmeldung an {host} ist fehlgeschlagen. Bitte die Zugangsdaten erneut eingeben.",
+        "data": { "username": "Benutzername", "password": "Passwort" }
+      }
+    },
+    "error": {
+      "cannot_connect": "FritzBox nicht erreichbar.",
+      "invalid_auth": "Benutzername oder Passwort falsch, oder dem Benutzer fehlt die Berechtigung \"FRITZ!Box Einstellungen\".",
+      "no_tr064": "TR-064 ist abgeschaltet. In der FritzBox \"Zugriff für Anwendungen zulassen\" einschalten."
+    },
+    "abort": { "already_configured": "Diese FritzBox ist bereits eingerichtet." }
+  },
+  "entity": {
+    "sensor": {
+      "registration_status": { "name": "Registrierungsstatus" },
+      "registered_numbers": { "name": "Registrierte Rufnummern" }
+    }
+  }
+}
