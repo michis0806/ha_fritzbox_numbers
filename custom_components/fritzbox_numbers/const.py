@@ -1,6 +1,6 @@
 """Konstanten für FritzBox Rufnummern."""
 
-DOMAIN = "fritzbox_voip"
+DOMAIN = "fritzbox_numbers"
 
 TR064_PORT = 49000
 DESC_PATH = "/tr64desc.xml"

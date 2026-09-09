@@ -1,6 +1,6 @@
 {
-  "domain": "fritzbox_voip",
-  "name": "FritzBox Rufnummern",
+  "domain": "fritzbox_numbers",
+  "name": "FritzBox Numbers",
   "codeowners": [
     "@michis0806"
   ],

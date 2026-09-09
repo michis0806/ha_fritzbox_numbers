@@ -1,7 +1,7 @@
-# FritzBox Numbers (`fritzbox_voip`)
+# FritzBox Numbers (`fritzbox_numbers`)
 
 [![Open your Home Assistant instance and open this repository inside HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=michis0806&repository=ha_fritzbox_numbers&category=integration)
-[![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=fritzbox_voip)
+[![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=fritzbox_numbers)
 
 Home Assistant custom integration that shows whether the **phone numbers of a
 FRITZ!Box are registered** with their VoIP provider — one device per number.
@@ -44,7 +44,7 @@ Click the HACS badge above, or manually:
 
 ### Manual
 
-Copy `custom_components/fritzbox_voip/` into your `config/custom_components/` folder
+Copy `custom_components/fritzbox_numbers/` into your `config/custom_components/` folder
 and restart Home Assistant.
 
 ## Setup
