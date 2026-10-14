@@ -7,6 +7,25 @@
           "on": "mdi:phone-in-talk"
         }
       }
+    },
+    "sensor": {
+      "missed_calls_today": {
+        "default": "mdi:phone-missed"
+      },
+      "last_call": {
+        "default": "mdi:phone-log"
+      },
+      "new_messages": {
+        "default": "mdi:voicemail"
+      }
+    },
+    "switch": {
+      "tam": {
+        "default": "mdi:voicemail",
+        "state": {
+          "off": "mdi:voicemail-off"
+        }
+      }
     }
   }
 }

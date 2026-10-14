@@ -5,7 +5,8 @@
 
 Home Assistant custom integration that shows whether the **phone numbers of a
 FRITZ!Box are registered** with their VoIP provider — one device per number —
-and which **DECT handsets** are currently in a call.
+which **DECT handsets** are currently in a call, what the **call list** says and
+whether the **answering machines** hold new messages.
 
 [Deutsche Beschreibung weiter unten.](#deutsch)
 
@@ -25,7 +26,12 @@ integration fills that gap by querying the TR-064 service `X_VoIP:1` and creates
 - one **device per DECT handset** (via `X_AVM-DE_Dect:1`, if the box has a DECT
   base) with an **in call** binary sensor — on from dialing or picking up until
   hanging up — and a diagnostic **update** binary sensor for pending handset
-  firmware updates.
+  firmware updates,
+- **missed calls today** and **last call** sensors per number, read from the call
+  list (`X_AVM-DE_OnTel:1`) — the last call as a timestamp with direction, number,
+  phone book name, handset and duration as attributes,
+- one **device per configured answering machine** (`X_AVM-DE_TAM:1`) with a
+  **switch** to turn it on and off and a **new messages** sensor.
 
 Battery level and signal strength of the handsets are not available via TR-064.
 
@@ -66,7 +72,8 @@ Assistant offers the usual re-authentication dialog.
 Numbers are polled every 5 minutes. If the box is temporarily unreachable, the last
 known values are kept for up to 30 minutes before entities become `unavailable`.
 Handsets are polled every 15 seconds, so the in-call sensor catches short calls; their
-last values are kept for up to 60 seconds. For instant reactions to ringing or
+last values are kept for up to 60 seconds. Call list and answering machines are
+polled every 60 seconds and kept for up to 10 minutes. For instant reactions to ringing or
 picking up, the official [call monitor](https://www.home-assistant.io/integrations/fritzbox_callmonitor/)
 is the better fit.
 Numbers that have been seen once are remembered, so their entities do not disappear
@@ -114,8 +121,14 @@ Wählen bzw. Abheben bis zum Auflegen, alle 15 Sekunden abgefragt) und einem
 Diagnose-Sensor für anstehende Firmware-Updates. Akkustand und Empfang gibt TR-064
 nicht her.
 
+Aus der Anrufliste entstehen je Rufnummer die Sensoren **Verpasste Anrufe heute**
+und **Letzter Anruf** (Zeitstempel, Richtung, Nummer, Name, Mobilteil und Dauer als
+Attribute). Je eingerichtetem Anrufbeantworter gibt es ein Gerät mit einem
+**Schalter** zum Ein- und Ausschalten und einem Sensor **Neue Nachrichten**.
+
 **Schnelltest, ob TR-064 an ist:** `http://<box>:49000/tr64desc.xml`. Kommt dort ein
 `404`, obwohl Port 49000 offen ist, ist die Anwendungsschnittstelle abgeschaltet.
 
 Bei Störungen werden die letzten Werte bis zu 30 Minuten weitergereicht, bei den
-Mobilteilen bis zu 60 Sekunden.
+Mobilteilen bis zu 60 Sekunden, bei Anrufliste und Anrufbeantwortern bis zu
+10 Minuten.

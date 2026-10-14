@@ -25,7 +25,10 @@
     },
     "sensor": {
       "registration_status": { "name": "Registrierungsstatus" },
-      "registered_numbers": { "name": "Registrierte Rufnummern" }
+      "registered_numbers": { "name": "Registrierte Rufnummern" },
+      "missed_calls_today": { "name": "Verpasste Anrufe heute" },
+      "last_call": { "name": "Letzter Anruf" },
+      "new_messages": { "name": "Neue Nachrichten" }
     }
   }
 }

@@ -25,7 +25,10 @@
     },
     "sensor": {
       "registration_status": { "name": "Registration status" },
-      "registered_numbers": { "name": "Registered numbers" }
+      "registered_numbers": { "name": "Registered numbers" },
+      "missed_calls_today": { "name": "Missed calls today" },
+      "last_call": { "name": "Last call" },
+      "new_messages": { "name": "New messages" }
     }
   }
 }
