@@ -11,7 +11,7 @@ from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from . import FritzVoipCoordinator
+from . import FritzNumbersData, FritzVoipCoordinator
 from .const import CONF_KNOWN_NUMBERS, DOMAIN
 from .entity import FritzVoipNumberEntity
 
@@ -19,7 +19,8 @@ from .entity import FritzVoipNumberEntity
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
-    coordinator: FritzVoipCoordinator = entry.runtime_data
+    daten: FritzNumbersData = entry.runtime_data
+    coordinator = daten.nummern
     nummern = sorted(
         set(entry.data.get(CONF_KNOWN_NUMBERS) or []) | set(coordinator.data or {})
     )

@@ -1,0 +1,12 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "in_call": {
+        "default": "mdi:phone",
+        "state": {
+          "on": "mdi:phone-in-talk"
+        }
+      }
+    }
+  }
+}

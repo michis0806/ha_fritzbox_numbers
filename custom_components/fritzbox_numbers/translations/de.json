@@ -20,6 +20,9 @@
     "abort": { "already_configured": "Diese FritzBox ist bereits eingerichtet." }
   },
   "entity": {
+    "binary_sensor": {
+      "in_call": { "name": "Im Gespräch" }
+    },
     "sensor": {
       "registration_status": { "name": "Registrierungsstatus" },
       "registered_numbers": { "name": "Registrierte Rufnummern" }

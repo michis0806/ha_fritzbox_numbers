@@ -20,6 +20,9 @@
     "abort": { "already_configured": "This FritzBox is already configured." }
   },
   "entity": {
+    "binary_sensor": {
+      "in_call": { "name": "In call" }
+    },
     "sensor": {
       "registration_status": { "name": "Registration status" },
       "registered_numbers": { "name": "Registered numbers" }

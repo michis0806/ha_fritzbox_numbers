@@ -10,5 +10,5 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/michis0806/ha_fritzbox_numbers/issues",
   "requirements": [],
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

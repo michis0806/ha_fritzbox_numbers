@@ -4,7 +4,8 @@
 [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=fritzbox_numbers)
 
 Home Assistant custom integration that shows whether the **phone numbers of a
-FRITZ!Box are registered** with their VoIP provider — one device per number.
+FRITZ!Box are registered** with their VoIP provider — one device per number —
+and which **DECT handsets** are currently in a call.
 
 [Deutsche Beschreibung weiter unten.](#deutsch)
 
@@ -20,7 +21,13 @@ integration fills that gap by querying the TR-064 service `X_VoIP:1` and creates
 - a **registration status** sensor per number carrying the raw status text reported
   by the box (`registered`, `unregistered`, …), as a diagnostic entity,
 - a **registered numbers** sensor on the box itself, counting the registered
-  numbers and listing the unregistered ones in an attribute.
+  numbers and listing the unregistered ones in an attribute,
+- one **device per DECT handset** (via `X_AVM-DE_Dect:1`, if the box has a DECT
+  base) with an **in call** binary sensor — on from dialing or picking up until
+  hanging up — and a diagnostic **update** binary sensor for pending handset
+  firmware updates.
+
+Battery level and signal strength of the handsets are not available via TR-064.
 
 ## Requirements
 
@@ -58,6 +65,10 @@ Assistant offers the usual re-authentication dialog.
 
 Numbers are polled every 5 minutes. If the box is temporarily unreachable, the last
 known values are kept for up to 30 minutes before entities become `unavailable`.
+Handsets are polled every 15 seconds, so the in-call sensor catches short calls; their
+last values are kept for up to 60 seconds. For instant reactions to ringing or
+picking up, the official [call monitor](https://www.home-assistant.io/integrations/fritzbox_callmonitor/)
+is the better fit.
 Numbers that have been seen once are remembered, so their entities do not disappear
 during an outage.
 
@@ -65,8 +76,7 @@ during an outage.
 
 TR-064 requires HTTP digest authentication, which `aiohttp` does not support. The
 requests therefore run through `urllib` in the executor rather than asynchronously —
-uncritical at one poll every five minutes, and it avoids a dependency on
-`fritzconnection`.
+uncritical at these poll rates, and it avoids a dependency on `fritzconnection`.
 
 ## Icon
 
@@ -82,8 +92,9 @@ This project is not affiliated with AVM. Use at your own risk.
 ## Deutsch
 
 Home-Assistant-Integration, die zeigt, ob die **Rufnummern einer FRITZ!Box beim
-VoIP-Anbieter registriert** sind — ein Gerät pro Rufnummer. Die offizielle
-FRITZ!Box-Tools-Integration liefert diese Information nicht.
+VoIP-Anbieter registriert** sind — ein Gerät pro Rufnummer — und welche
+**DECT-Mobilteile** gerade telefonieren. Die offizielle FRITZ!Box-Tools-Integration
+liefert diese Informationen nicht.
 
 - Benötigt **"Zugriff für Anwendungen zulassen"** (TR-064) in der FritzBox unter
   *Heimnetz → Netzwerk → Netzwerkeinstellungen*. UPnP-Statusinformationen werden
@@ -98,7 +109,13 @@ Je Rufnummer entstehen ein Verbindungs-Binärsensor und ein Diagnose-Sensor mit 
 unveränderten Statustext der Box; an der Box selbst zählt ein Sensor die
 registrierten Rufnummern und listet die nicht verbundenen als Attribut.
 
+Je DECT-Mobilteil entsteht ein Gerät mit einem Binärsensor **Im Gespräch** (an vom
+Wählen bzw. Abheben bis zum Auflegen, alle 15 Sekunden abgefragt) und einem
+Diagnose-Sensor für anstehende Firmware-Updates. Akkustand und Empfang gibt TR-064
+nicht her.
+
 **Schnelltest, ob TR-064 an ist:** `http://<box>:49000/tr64desc.xml`. Kommt dort ein
 `404`, obwohl Port 49000 offen ist, ist die Anwendungsschnittstelle abgeschaltet.
 
-Bei Störungen werden die letzten Werte bis zu 30 Minuten weitergereicht.
+Bei Störungen werden die letzten Werte bis zu 30 Minuten weitergereicht, bei den
+Mobilteilen bis zu 60 Sekunden.
